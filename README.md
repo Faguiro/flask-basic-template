@@ -1,4 +1,4 @@
-[![Este pacote está atualmente em desenvolvimento.]
+[![Este projeto está em desenvolvimento](https://img.shields.io/badge/desenvolvimento-experimental-orange.svg)](#experimental)
 
 ## demo de flask
 
