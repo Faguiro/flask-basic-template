@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <style>
+    html {
+      background: url(https://images.unsplash.com/photo-1596133947161-dc4c4e6077a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80g) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .lightbox__modal {
+      display: flex;
+      flex-direction: column;
+      z-index: 5;
+      pointer-events: auto;
+      background: #232222;
+      color: #bfa084;
+      position: fixed;
+      top: auto;
+      bottom: 0;
+      left: 50%;
+      margin-left: -530px;
+      width: 360px;
+      height: 332px;
+      transform: translateY(350px);
+      transition: transform 1s;
+      animation: fade_in_close 1.5s;
+    }
+
+    lightbox__close icon__close {
+      width: 20px;
+    }
+
+    .icon-close {
+      color: red;
+    }
+
+    .popup {
+      z-index: 0;
+      display: flex;
+      flex-flow: nowrap;
+      top: auto;
+      bottom: 0;
+      left: 50%;
+      width: 360px;
+      height: 52px;
+      background: #232222;
+      color: #bfa084;
+      flex-wrap: nowrap;
+      align-items: center;
+      pointer-events: auto;
+      justify-content: space-evenly;
+      //transform: translate(230px, 345px);
+    }
+
+    .js-open {
+      transform: translateY(0);
+      transition: transform 1s;
+      animation: fade_in_close 1.5s;
+    }
+
+    .newsletter__header {
+      flex-wrap: wrap;
+      margin: 22px auto 11px auto;
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 140%;
+      text-align: center;
+      letter-spacing: 0.04em;
+      color: #bfa084;
+    }
+
+    .newsletter__form {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 250px;
+      //max-width: 310px;
+    }
+
+    .newsletter__input {
+      width: 80%;
+      height: 40px;
+      border: 0;
+      border-bottom: 1px solid black;
+      background: white;
+      margin: 10px;
+      font-size: 14px;
+      font-family: Quicksand;
+    }
+
+    .newsletter--newsbox {
+      font-size: 12px;
+      background: none !important;
+      padding: 0 55px 0 !important;
+    }
+
+    .newsletter__fieldset {
+      //width: 250px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      // height: 155px;
+      margin: 0;
+    }
+
+    span {
+      margin: auto;
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 140%;
+      text-align: center;
+      letter-spacing: 0.04em;
+      color: #bfa084;
+    }
+
+    .newsletter__submit {
+      width: 100% !important;
+      width: 250px;
+      background-color: #bfa084;
+      margin-top: 10;
+      border: none;
+      font-size: 0;
+    }
+
+    .newsletter__footer {
+      margin: auto;
+      padding-top: 11px;
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 10px;
+      line-height: 140%;
+      text-align: center;
+      letter-spacing: 0.04em;
+      color: #bfa0;
+    }
+
+    .newsletter__content {
+      padding: 0;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .js-close {
+      transform: translateY(350px);
+      transition: transform 1s;
+      animation: fade_in_close 1.5s;
+    }
+
+    @keyframes fade_in_show {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fade_in_close {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+  </style>
+  <div class="popup">
+    <i class="icon icon-close close-mini"></i>
+    <h4>Ganhe 10% de desconto!</h4>
+    <button class="btn-mini">INSCREVA-SE</button>
+  </div>
+
+  <div clas="home__lightbox">
+    <div id="newsbox" class="lightbox lightbox--default lightbox--newsbox">
+      <div class="lightbox__modal">
+        <button class="lightbox__close icon__close" data-action="close"> <i class="icon icon-close">close</i> </button>
+        <div class="newsletter__content container">
+          <div class="newsletter__header"><span class='lighter'>INSCREVA-SE E GANHE </span> <BR> <span> 10% DE
+              DESCONTO.</span></div>
+          <div class="newsletter__form">
+            <label class="newsletter__label">Digite aqui</label>
+            <input type="text" name="firstName" placeholder="Digite aqui" minlength="3" required="required"
+              class="newsletter__input--firstname" />
+            <label class="newsletter__label">E-mail</label>
+            <input type="email" name="email" title="E-mail" placeholder="Digite aqui" required="required"
+              class="newsletter__input--email" />
+            </span>
+            <button type="submit" class="newsletter__submit button" properties="">INSCREVA-SE</button>
+            <div class="newsletter__message newsletter__message--success">Cadastrado com sucesso</div>
+            <div class="newsletter__message newsletter__message--error">Erro ao enviar informações</div>
+            </form>
+          </div>
+          <div class="newsletter__footer"><span class='modal-footer'>Ao se registrar, você concorda com nossa <a
+                href='#'>Política de Privacidade e Cookies e Termos e condições.</a></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let modal = document.querySelector(".lightbox__modal");
+
+    let show_modal = document
+      .querySelector(".btn-mini")
+      .addEventListener("click", function () {
+        modal.classList.add("js-open");
+        modal.classList.remove("js-close");
+      });
+
+    let down_modal = document
+      .querySelector(".lightbox__close")
+      .addEventListener("click", function () {
+        modal.classList.add("js-close");
+        modal.classList.remove("js-open");
+      });
+
+  </script>
+</body>
+
+</html>
